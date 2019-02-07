@@ -19,7 +19,18 @@ public class QueenBoard{
 	}
 
 	public String toString(){
-
+		String ans = "";
+		for (int r = 0; r < board.length; r++){
+			for (int c = 0; c < board[r].length; c++){
+				if (board[r][c] == -1){
+					ans += "Q";
+				}
+				else{
+					ans += "_";
+				}
+			}
+		}
+		return ans;
 	}
 
 	public boolean solve(){
