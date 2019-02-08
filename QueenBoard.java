@@ -11,11 +11,31 @@ public class QueenBoard{
 	}
 
 	private boolean addQueen(int r, int c){
-		board[r][c] = -1; // -1 is a queen
+		if (board[r][c] == 0){		
+			board[r][c] = -1; // -1 is a queen
+			for (int i = 0; i < board.length; i++){
+				board[i][c] = board[i][c] + 1;
+			}
+			for (int k = 0; k < board[r].length; k++){
+				board[r][k] = board[r][k] + 1;
+			}
+			return true;
+		}
+		return false;
 	}
 
 	private boolean removeQueen(int r, int c){
-		board[r][c] = 0; 
+		if (board[r][c] == -1){		
+			board[r][c] = 0; 
+			for (int i = 0; i < board.length; i++){
+				board[i][c] = board[i][c] - 1;
+			}
+			for (int k = 0; k < board[r].length; k++){
+				board[r][k] = board[r][k] - 1;
+			}
+			return true;
+		}
+		return false;
 	}
 
 	public String toString(){
@@ -23,10 +43,10 @@ public class QueenBoard{
 		for (int r = 0; r < board.length; r++){
 			for (int c = 0; c < board[r].length; c++){
 				if (board[r][c] == -1){
-					ans += "Q";
+					ans += "Q ";
 				}
 				else{
-					ans += "_";
+					ans += "_ ";
 				}
 			}
 		}
@@ -34,7 +54,12 @@ public class QueenBoard{
 	}
 
 	public boolean solve(){
-		
+		return solveHelper(0,0);
+	}
+
+	private boolean solveHelper(int startR, int startC){
+		addQueen(startR,startC);
+			
 	}
 
 	public int countSolutions(){
