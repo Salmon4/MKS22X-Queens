@@ -57,8 +57,13 @@ public class QueenBoard{
 		return solveHelper(0,0);
 	}
 
-	private boolean solveHelper(int startR, int startC){
-		addQueen(startR,startC);
+	private boolean solveHelper(int startR, int startC){ //goes row by row and col by col and check if its avaliable
+		if (board[startR][startC] == 0){
+			addQueen(startR,startC);
+		}
+		for (int r = startR; r < board.length; r++){
+			for (int c = startC; c < board[r].length; c++){
+				
 			
 	}
 
