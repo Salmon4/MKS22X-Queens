@@ -11,7 +11,7 @@ public class QueenBoard{
 	}
 
 	private boolean addQueen(int r, int c){
-		if (board[r][c] == 0){		
+		if (board[r][c] == 0){
 			board[r][c] = -1; // -1 is a queen
 			for (int i = 0; i < board.length; i++){
 				board[i][c] = board[i][c] + 1;
@@ -19,19 +19,59 @@ public class QueenBoard{
 			for (int k = 0; k < board[r].length; k++){
 				board[r][k] = board[r][k] + 1;
 			}
+			int space = 1;
+			for (int j = c + 1; j < board[r].length; c++){
+				if (r + space < board.length){
+					board[r + space][j] = board[r - space][j] + 1;
+					space++;
+				}
+				if (r - space >= 0){
+					board[r - space][j] = board[r-space][j] + 1;
+					space++;
+				}
+			}
+			space = 1;
+			for (int h = c - 1; h >= 0; h--){
+				if (h + space < board.length){
+					board[r + space][h] = board[r + space][h] + 1;
+				}
+				if (h - space >= 0){
+					board[r - space][ h] = board[r - space][h] + 1;
+				}
+			}
 			return true;
 		}
 		return false;
 	}
 
 	private boolean removeQueen(int r, int c){
-		if (board[r][c] == -1){		
-			board[r][c] = 0; 
+		if (board[r][c] == -1){
+			board[r][c] = 0;
 			for (int i = 0; i < board.length; i++){
 				board[i][c] = board[i][c] - 1;
 			}
 			for (int k = 0; k < board[r].length; k++){
 				board[r][k] = board[r][k] - 1;
+			}
+			int space = 1;
+			for (int j = c + 1; j < board[r].length; c++){
+				if (r + space < board.length){
+					board[r + space][j] = board[r - space][j] - 1;
+					space++;
+				}
+				if (r - space >= 0){
+					board[r - space][j] = board[r-space][j] - 1;
+					space++;
+				}
+			}
+			space = 1;
+			for (int h = c - 1; h >= 0; h--){
+				if (h + space < board.length){
+					board[r + space][h] = board[r + space][h] - 1;
+				}
+				if (h - space >= 0){
+					board[r - space][h] = board[r - space][h] - 1;
+				}
 			}
 			return true;
 		}
@@ -63,12 +103,12 @@ public class QueenBoard{
 		}
 		for (int r = startR; r < board.length; r++){
 			for (int c = startC; c < board[r].length; c++){
-				
-			
+
+
 	}
 
 	public int countSolutions(){
-	
+
 	}
 
 }
