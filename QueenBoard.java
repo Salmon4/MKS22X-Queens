@@ -1,8 +1,8 @@
 public class QueenBoard{
-	private int[][]board;
+	private int[][] board;
 
 	public QueenBoard(int size){
-		int[][] board = new int[size][size];
+		board = new int[size][size];
 		for (int r = 0; r < size; r++){
 			for (int c = 0; c < size; c++){
 				board[r][c] = 0; //0 is a blank spot
@@ -10,68 +10,84 @@ public class QueenBoard{
 		}
 	}
 
-	private boolean addQueen(int r, int c){
+	public boolean addQueen(int r, int c){
 		if (board[r][c] == 0){
 			board[r][c] = -1; // -1 is a queen
 			for (int i = 0; i < board.length; i++){
+				if (i != r){
 				board[i][c] = board[i][c] + 1;
 			}
+			}
 			for (int k = 0; k < board[r].length; k++){
+				if (k != c){
 				board[r][k] = board[r][k] + 1;
 			}
+			}
+
 			int space = 1;
-			for (int j = c + 1; j < board[r].length; c++){
+			for (int j = c + 1; j < board[r].length; j++){
 				if (r + space < board.length){
-					board[r + space][j] = board[r - space][j] + 1;
-					space++;
+					board[r + space][j] = board[r + space][j] + 1;
+					//space++;
 				}
 				if (r - space >= 0){
 					board[r - space][j] = board[r-space][j] + 1;
-					space++;
+					//space++;
 				}
+				space++;
 			}
+
 			space = 1;
 			for (int h = c - 1; h >= 0; h--){
-				if (h + space < board.length){
+				if (r + space < board.length){
 					board[r + space][h] = board[r + space][h] + 1;
 				}
-				if (h - space >= 0){
-					board[r - space][ h] = board[r - space][h] + 1;
+				if (r - space >= 0){
+					board[r - space][h] = board[r - space][h] + 1;
 				}
+				space++;
 			}
 			return true;
+
 		}
 		return false;
 	}
 
-	private boolean removeQueen(int r, int c){
+	public boolean removeQueen(int r, int c){
 		if (board[r][c] == -1){
 			board[r][c] = 0;
 			for (int i = 0; i < board.length; i++){
+				if (i != r){
 				board[i][c] = board[i][c] - 1;
 			}
+		}
 			for (int k = 0; k < board[r].length; k++){
+				if (k != c){
 				board[r][k] = board[r][k] - 1;
 			}
+		}
 			int space = 1;
-			for (int j = c + 1; j < board[r].length; c++){
+			for (int j = c + 1; j < board[r].length; j++){
 				if (r + space < board.length){
-					board[r + space][j] = board[r - space][j] - 1;
-					space++;
+					board[r + space][j] = board[r + space][j] - 1;
+					//space++;
 				}
 				if (r - space >= 0){
 					board[r - space][j] = board[r-space][j] - 1;
-					space++;
+					//space++;
 				}
+				space++;
 			}
+
 			space = 1;
 			for (int h = c - 1; h >= 0; h--){
-				if (h + space < board.length){
+				if (r + space < board.length){
 					board[r + space][h] = board[r + space][h] - 1;
 				}
-				if (h - space >= 0){
+				if (r - space >= 0){
 					board[r - space][h] = board[r - space][h] - 1;
 				}
+				space++;
 			}
 			return true;
 		}
@@ -86,9 +102,10 @@ public class QueenBoard{
 					ans += "Q ";
 				}
 				else{
-					ans += "_ ";
+					ans += "_ ";//board[r][c] + " ";//"_ ";
 				}
 			}
+			ans += "\n";
 		}
 		return ans;
 	}
@@ -103,11 +120,11 @@ public class QueenBoard{
 		}
 		for (int c = 0; c < board[row].length; c++){
 			if (board[row][c] == 0){
-				board[row][c] == -1;
+				addQueen(row,c);
 				if (solveHelper(row+1)){
 					return true;
 				}
-				board[row][c] == 0;
+				removeQueen(row,c);
 			}
 		}
 		return false;
@@ -140,7 +157,7 @@ public class QueenBoard{
 				}
 			}
 		}
-		return true;
+		return found;
 	}
 
 	//public int countSolutions(){
