@@ -94,21 +94,57 @@ public class QueenBoard{
 	}
 
 	public boolean solve(){
-		return solveHelper(0,0);
+		return solveHelper(0);
 	}
 
-	private boolean solveHelper(int startR, int startC){ //goes row by row and col by col and check if its avaliable
-		if (board[startR][startC] == 0){
-			addQueen(startR,startC);
+	private boolean solveHelper(int row){ //goes row by row and col by col and check if its avaliable
+		if (check()){
+			return true;
 		}
-		for (int r = startR; r < board.length; r++){
-			for (int c = startC; c < board[r].length; c++){
-
-
+		for (int c = 0; c < board[row].length; c++){
+			if (board[row][c] == 0){
+				board[row][c] == -1;
+				if (solveHelper(row+1)){
+					return true;
+				}
+				board[row][c] == 0;
+			}
+		}
+		return false;
 	}
 
-	public int countSolutions(){
 
+	private boolean check(){
+		boolean found = false;
+		//checks every row
+		for (int r = 0; r < board.length; r++){
+			found = false;
+			for (int c = 0; c < board[r].length; c++){
+				if (board[r][c] == -1){
+					found = true;
+				}
+				if (c == board[r].length - 1 && found == false){
+					return false;
+				}
+			}
+		}
+		found = false;
+		//checks every column
+		for (int c = 0; c < board[0].length; c++){
+			for (int r = 0; r < board.length; r++){
+				if (board[r][c] == -1){
+					found = true;
+				}
+				if (r == board.length - 1 && found == false){
+					return false;
+				}
+			}
+		}
+		return true;
 	}
+
+	//public int countSolutions(){
+
+	//}
 
 }
