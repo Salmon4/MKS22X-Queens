@@ -111,6 +111,13 @@ public class QueenBoard{
 	}
 
 	public boolean solve(){
+		for (int r = 0; r < board.length; r++){
+			for (int c = 0; c < board[r].length;c++){
+				if (board[r][c] != 0){
+					throw new IllegalStateException("Board is not clear");
+				}
+			}
+		}
 		return solveHelper(0);
 	}
 
@@ -163,7 +170,9 @@ public class QueenBoard{
 	public int countSolutions(){
 		for (int r = 0; r < board.length; r++){
 			for (int c = 0; c < board[r].length;c++){
-				board[r][c] = 0;
+				if (board[r][c] != 0){
+					throw new IllegalStateException("Board is not clear");
+				}
 			}
 		}
 		return countSolutionsHelper(0,0);
