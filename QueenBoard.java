@@ -160,8 +160,25 @@ public class QueenBoard{
 		return found;
 	}
 
-	//public int countSolutions(){
+	public int countSolutions(){
+		return countSolutionsHelper(0,0);
+	}
 
-	//}
 
+	public int countSolutionsHelper(int row, int ans){
+		if (check()){
+			ans += 1;
+			return ans;
+		}
+		for (int c = 0; c < board[row].length; c++){
+			if (board[row][c] == 0){
+				addQueen(row,c);
+				if (countSolutionsHelper(row+1,ans) > 0){
+					ans = countSolutionsHelper(row+1,ans);
+				}
+				removeQueen(row,c);
+			}
+		}
+		return ans;
+}
 }
