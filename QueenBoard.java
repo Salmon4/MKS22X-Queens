@@ -10,7 +10,7 @@ public class QueenBoard{
 		}
 	}
 
-	public boolean addQueen(int r, int c){
+	private boolean addQueen(int r, int c){
 		if (board[r][c] == 0){
 			board[r][c] = -1; // -1 is a queen
 			for (int i = 0; i < board.length; i++){
@@ -53,7 +53,7 @@ public class QueenBoard{
 		return false;
 	}
 
-	public boolean removeQueen(int r, int c){
+	private boolean removeQueen(int r, int c){
 		if (board[r][c] == -1){
 			board[r][c] = 0;
 			for (int i = 0; i < board.length; i++){
