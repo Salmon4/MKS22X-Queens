@@ -45,14 +45,14 @@ public class Driver{
 
     System.out.println("8 by 8 board");
     System.out.println(board3.toString());
-    /**
+    /*
     System.out.println("Solving 8 by 8 board");
     System.out.println(board3.solve());
     System.out.println(board3.toString());
     **/
     System.out.println("Counting the solutions");
     System.out.println(board3.countSolutions());
-
+    System.out.println(board3.toString());
     System.out.println("");
 
     System.out.println("10 by 10 board");

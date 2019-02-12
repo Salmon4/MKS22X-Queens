@@ -182,6 +182,11 @@ public class QueenBoard{
 			return 0;
 		}
 		return countSolutionsHelper(0,0);
+		//for (int r = 0; r < board.length; r++){
+			//for (int c = 0; c < board[r].length; c++){
+				//board[r][c] = 0;
+			//}
+		//}
 	}
 
 
