@@ -8,7 +8,7 @@ public class Driver{
     int correct = answers[i];
     b = new QueenBoard(size);
     int ans  = b.countSolutions();
-   
+
     if(correct==ans){
       System.out.println("PASS board size: "+tests[i]+" "+ans);
     }else{
@@ -33,11 +33,11 @@ runTest(5);
     try{
     System.out.println("1 by 1 board");
     System.out.println(board0.toString());
-    
+
     System.out.println("Solving 1 by 1 board");
     System.out.println(board0.solve());
     System.out.println(board0.toString());
-    
+
     System.out.println("Counting the solutions");
     System.out.println(board0.countSolutions());
 
@@ -45,11 +45,11 @@ runTest(5);
 
     System.out.println("3 by 3 board");
     System.out.println(board1.toString());
-    
+
     System.out.println("Solving 3 by 3 board");
     System.out.println(board1.solve());
     System.out.println(board1.toString());
-    
+
     System.out.println("Counting the solutions");
     System.out.println(board1.countSolutions());
 
@@ -57,11 +57,11 @@ runTest(5);
 
     System.out.println("4 by 4 board");
     System.out.println(board2.toString());
-   
+
     System.out.println("Solving 4 by 4 board");
     System.out.println(board2.solve());
     System.out.println(board2.toString());
-    
+
     System.out.println("Counting the solutions");
     System.out.println(board2.countSolutions());
 
@@ -69,11 +69,11 @@ runTest(5);
 
     System.out.println("8 by 8 board");
     System.out.println(board3.toString());
-    
+
     System.out.println("Solving 8 by 8 board");
     System.out.println(board3.solve());
     System.out.println(board3.toString());
-    
+
     System.out.println("Counting the solutions");
     System.out.println(board3.countSolutions());
     System.out.println(board3.toString());
@@ -81,15 +81,11 @@ runTest(5);
 
     System.out.println("10 by 10 board");
     System.out.println(board4.toString());
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 14804c976d1d344a7ab9b526882c5883056872f0
     System.out.println("Solving 10 by 10 board");
     System.out.println(board4.solve());
     System.out.println(board4.toString());
-    
+
     System.out.println("Counting the solutions");
     System.out.println(board4.countSolutions());
 
