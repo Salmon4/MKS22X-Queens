@@ -57,11 +57,11 @@ public class Driver{
 
     System.out.println("10 by 10 board");
     System.out.println(board4.toString());
-    /**
+
     System.out.println("Solving 10 by 10 board");
     System.out.println(board4.solve());
     System.out.println(board4.toString());
-    **/
+    
     System.out.println("Counting the solutions");
     System.out.println(board4.countSolutions());
 
