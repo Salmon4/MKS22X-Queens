@@ -128,6 +128,7 @@ public class QueenBoard{
 		if (check()){
 			return true;
 		}
+
 		for (int c = 0; c < board[row].length; c++){
 			if (board[row][c] == 0){
 				addQueen(row,c);
@@ -181,7 +182,7 @@ public class QueenBoard{
 		if (board.length == 0){
 			return 0;
 		}
-		return countSolutionsHelper(0,0);
+		return countSolutionsHelper(0);
 		//for (int r = 0; r < board.length; r++){
 			//for (int c = 0; c < board[r].length; c++){
 				//board[r][c] = 0;
@@ -190,20 +191,19 @@ public class QueenBoard{
 	}
 
 
-	public int countSolutionsHelper(int row, int ans){
-		if (check()){
-			ans += 1;
-			return ans;
+	public int countSolutionsHelper(int row) {
+		int count = 0;
+		if (row >= board.length) {
+						return 1;
 		}
-		for (int c = 0; c < board[row].length; c++){
-			if (board[row][c] == 0){
-				addQueen(row,c);
-				if (countSolutionsHelper(row+1,ans) > 0){
-					ans = countSolutionsHelper(row+1,ans);
-				}
-				removeQueen(row,c);
+		for (int i = 0; i < board.length; i++) {
+			if (addQueen(row, i)) {
+				count += countSolutionsHelper(row + 1);
+				removeQueen(row, i);
 			}
 		}
-		return ans;
-}
+		return count;
+	}
+
+
 }
